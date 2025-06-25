@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7-Eleven Hà Nội - Tuyển Dụng (PDF Version)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #007350, #1b5644, #007350);
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Container chính - layout dọc */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        /* Floating CTA Button */
+        .floating-cta {
+            position: fixed !important;
+            right: 20px !important;
+            bottom: 77px !important;
+            z-index: 9999 !important;
+            background: linear-gradient(135deg, #ff6c00, #ec0f2a) !important;
+            color: white !important;
+            padding: 15px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 20px rgba(255,108,0,0.4);
+            animation: pulse 2s infinite;
+            transition: all 0.3s ease;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+
+        /* Mobile First Approach */
+        @media screen and (max-width: 768px) {
+            .floating-cta {
+                right: 15px !important;
+                bottom: 72px !important;
+                padding: 12px 18px !important;
+                font-size: 0.85em !important;
+                border-radius: 25px !important;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .floating-cta {
+                right: 12px !important;
+                bottom: 69px !important;
+                padding: 10px 15px !important;
+                font-size: 0.8em !important;
+                border-radius: 20px !important;
+            }
+        }
+
+        @media screen and (max-width: 360px) {
+            .floating-cta {
+                right: 10px !important;
+                bottom: 65px !important;
+                padding: 8px 12px !important;
+                font-size: 0.75em !important;
+                border-radius: 18px !important;
+            }
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 4px 20px rgba(255,108,0,0.4); }
+            50% { box-shadow: 0 4px 30px rgba(255,108,0,0.8); }
+            100% { box-shadow: 0 4px 20px rgba(255,108,0,0.4); }
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            background: linear-gradient(135deg, #007350, #1b5644);
+            color: white;
+            padding: 40px 20px 30px 20px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255,255,255,0.1) 10px,
+                rgba(255,255,255,0.1) 20px
+            );
+            animation: shine 3s linear infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .header p {
+            font-size: 1.3em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+            margin-bottom: 20px;
+        }
+
+        .header-cta {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6c00, #ec0f2a);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(255,108,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Mục lục */
+        .table-of-contents {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .table-of-contents::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #ff6c00, #ec0f2a, #ff6c00);
+            animation: gradientShift 3s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background: linear-gradient(90deg, #ff6c00, #ec0f2a, #ff6c00); }
+            50% { background: linear-gradient(90deg, #ec0f2a, #ff6c00, #ec0f2a); }
+        }
+
+        .table-of-contents h2 {
+            color: #007350;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .toc-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
+        .toc-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 20px;
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #333;
+            border-left: 4px solid #ff6c00;
+            font-weight: 600;
+            font-size: 1em;
+        }
+
+        .toc-icon {
+            font-size: 1.3em;
+            min-width: 25px;
+            color: #007350;
+        }
+
+        /* Slides - Layout dọc */
+        .slides-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .slide {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            page-break-inside: avoid;
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #ff6c00, #ec0f2a, #ff6c00);
+            animation: gradientShift 3s ease-in-out infinite;
+        }
+
+        .slide h2 {
+            color: #007350;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            line-height: 1.2;
+        }
+
+        .slide h3 {
+            color: #1b5644;
+            font-size: 1.3em;
+            margin: 15px 0 10px 0;
+            border-left: 4px solid #ff6c00;
+            padding-left: 15px;
+        }
+
+        .slide ul {
+            list-style: none;
+            margin: 15px 0;
+        }
+
+        .slide li {
+            margin: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .slide li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #ff6c00;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        /* Job Content Poster */
+        .job-content-poster {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            page-break-inside: avoid;
+        }
+
+        .job-content-poster::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #ff6c00, #ec0f2a, #ff6c00);
+            animation: gradientShift 3s ease-in-out infinite;
+        }
+
+        .poster-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .poster-header h2 {
+            color: #007350;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .poster-header p {
+            color: #333;
+            font-size: 1.1em;
+            line-height: 1.3;
+        }
+
+        .job-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .job-card {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: left;
+            border-left: 4px solid #ff6c00;
+        }
+
+        .job-card h3 {
+            color: #1b5644;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            border: none;
+            padding: 0;
+            text-align: left;
+        }
+
+        .job-card ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .job-card li {
+            margin: 6px 0;
+            padding: 0;
+            color: #333;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+
+        .job-card li::before {
+            content: '✓';
+            color: #ff6c00;
+            font-weight: bold;
+            margin-right: 6px;
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .schedule-card {
+            background: linear-gradient(135deg, #007350, #1b5644);
+            color: white;
+            padding: 15px;
+            border-radius: 12px;
+            text-align: left;
+        }
+
+        .schedule-card h4 {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            color: white;
+            text-align: left;
+        }
+
+        .schedule-card ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .schedule-card li {
+            margin: 6px 0;
+            padding: 6px 10px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 6px;
+            font-size: 0.85em;
+        }
+
+        /* Process Steps */
+        .process-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .step {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-left: 5px solid #007350;
+            padding: 15px;
+            border-radius: 12px;
+        }
+
+        .step-number {
+            font-size: 0.9em;
+            color: #007350;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .step-action {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #1b5644;
+        }
+
+        /* Tables */
+        .salary-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin: 15px 0;
+        }
+
+        .salary-table th {
+            background: linear-gradient(135deg, #ff6c00, #ec0f2a);
+            color: white;
+            padding: 10px 6px;
+            text-align: center;
+            font-size: 0.8em;
+        }
+
+        .salary-table td {
+            padding: 8px 6px;
+            text-align: center;
+            font-size: 0.75em;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .salary-table tr:nth-child(even) {
+            background: white;
+        }
+
+        .salary-table tr:last-child {
+            background: linear-gradient(135deg, #007350, #1b5644);
+            color: white;
+            font-weight: bold;
+        }
+
+        .table-header {
+            background: linear-gradient(135deg, #007350, #1b5644);
+            color: white;
+            padding: 10px;
+            text-align: left;
+            font-size: 1em;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .table-header .icon {
+            color: white !important;
+            margin-right: 8px;
+        }
+
+        .career-path-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .career-path-table th {
+            background: linear-gradient(135deg, #007350, #1b5644);
+            color: white;
+            padding: 10px 6px;
+            text-align: center;
+            font-size: 0.8em;
+        }
+
+        .career-path-table td {
+            padding: 8px 6px;
+            text-align: center;
+            font-size: 0.75em;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .career-path-table tr:nth-child(even) {
+            background: white;
+        }
+
+        .career-level {
+            font-weight: bold;
+            color: #1b5644;
+        }
+
+        /* Referral Bonus Section */
+        .referral-section {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            page-break-inside: avoid;
+        }
+
+        .referral-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #ff6c00, #ec0f2a, #ff6c00);
+            animation: gradientShift 3s ease-in-out infinite;
+        }
+
+        .referral-section h2 {
+            color: #007350;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            line-height: 1.2;
+        }
+
+        .referral-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+
+        .referral-table th {
+            background: #007350;
+            color: white;
+            padding: 12px 8px;
+            text-align: center;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+
+        .referral-table td {
+            padding: 12px 8px;
+            text-align: center;
+            font-size: 0.85em;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .referral-table tr:nth-child(2) td:nth-child(1) {
+            background: white;
+            border-left: 3px solid #007350;
+            font-weight: normal;
+            color: #333;
+        }
+
+        .referral-table tr:nth-child(2) td:nth-child(2) {
+            background: white;
+            color: #333;
+        }
+
+        .referral-table tr:nth-child(2) td:nth-child(3) {
+            background: white;
+            color: #333;
+            font-weight: normal;
+            font-size: 0.85em;
+        }
+
+        .referral-table tr:nth-child(3) td {
+            background: white !important;
+            color: #333;
+            font-weight: normal;
+            font-size: 0.85em;
+            border-left: none !important;
+            border: none !important;
+        }
+
+        .referral-table tr:last-child {
+            background: white;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .referral-table tr:last-child td {
+            border-bottom: none;
+            font-size: 1em;
+            background: white;
+            color: #333;
+        }
+
+        .referral-conditions {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-left: 4px solid #ff6c00;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .referral-conditions h4 {
+            color: #1b5644;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .referral-conditions ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .referral-conditions li {
+            margin: 6px 0;
+            padding-left: 20px;
+            position: relative;
+            color: #333;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+
+        .referral-conditions li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #ff6c00;
+            font-weight: bold;
+        }
+
+        /* Q&A Section */
+        .qa-section {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            page-break-inside: avoid;
+        }
+
+        .qa-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #ff6c00, #ec0f2a, #ff6c00);
+            animation: gradientShift 3s ease-in-out infinite;
+        }
+
+        .qa-section h2 {
+            color: #007350;
+            font-size: 1.6em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .qa-item {
+            margin-bottom: 15px;
+            padding: 12px;
+            border-left: 4px solid #ff6c00;
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+        }
+
+        .qa-question {
+            font-weight: bold;
+            color: #1b5644;
+            margin-bottom: 6px;
+            font-size: 0.95em;
+        }
+
+        .qa-answer {
+            color: #333;
+            line-height: 1.5;
+            font-size: 0.9em;
+        }
+
+        .qa-answer ul {
+            margin: 8px 0;
+            padding-left: 15px;
+        }
+
+        .qa-answer ul li {
+            margin: 4px 0;
+            list-style-type: disc;
+            color: #333;
+            font-size: 0.85em;
+        }
+
+        .qa-answer ul li::before {
+            content: none;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #007350, #1b5644);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            page-break-inside: avoid;
+        }
+
+        .cta-section h2 {
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6c00, #ec0f2a);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: bold;
+            box-shadow: 0 10px 20px rgba(255,108,0,0.3);
+        }
+
+        .social-links {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .social-row {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            text-decoration: none;
+            font-size: 0.9em;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-link:hover {
+            opacity: 1;
+        }
+
+        .social-icon {
+            font-size: 1.2em;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .floating-cta {
+                display: none;
+            }
+            
+            .slide, .job-content-poster, .qa-section, .cta-section, .referral-section {
+                page-break-inside: avoid;
+                margin-bottom: 20px;
+            }
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2em;
+                line-height: 1.1;
+            }
+
+            .header p {
+                font-size: 1.1em;
+                line-height: 1.2;
+            }
+
+            .slide h2 {
+                font-size: 1.4em;
+                line-height: 1.2;
+            }
+
+            .slide h3 {
+                font-size: 1.1em;
+                line-height: 1.2;
+            }
+
+            .poster-header h2 {
+                font-size: 1.6em;
+                line-height: 1.2;
+            }
+
+            .poster-header p {
+                font-size: 0.9em;
+                line-height: 1.2;
+            }
+
+            .job-card h3 {
+                font-size: 1em;
+                line-height: 1.2;
+            }
+
+            .schedule-card h4 {
+                font-size: 0.95em;
+                line-height: 1.2;
+            }
+
+            .table-header {
+                font-size: 0.9em;
+                line-height: 1.2;
+            }
+
+            .qa-section h2 {
+                font-size: 1.3em;
+                line-height: 1.2;
+            }
+
+            .cta-section h2 {
+                font-size: 1.6em;
+                line-height: 1.2;
+            }
+
+            .table-of-contents h2 {
+                font-size: 1.4em;
+                line-height: 1.2;
+            }
+
+            .referral-section h2 {
+                font-size: 1.2em;
+                line-height: 1.1;
+            }
+
+            .referral-table th {
+                font-size: 0.65em;
+                padding: 6px 2px;
+            }
+
+            .referral-table tr:last-child td {
+                font-size: 0.85em;
+                font-weight: bold;
+            }
+
+            .job-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .schedule-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.8em;
+                line-height: 1.1;
+            }
+
+            .header p {
+                font-size: 1em;
+                line-height: 1.2;
+            }
+
+            .slide h2 {
+                font-size: 1.2em;
+                line-height: 1.1;
+            }
+
+            .slide h3 {
+                font-size: 1em;
+                line-height: 1.1;
+            }
+
+            .poster-header h2 {
+                font-size: 1.4em;
+                line-height: 1.1;
+            }
+
+            .poster-header p {
+                font-size: 0.8em;
+                line-height: 1.1;
+            }
+
+            .job-card h3 {
+                font-size: 0.9em;
+                line-height: 1.1;
+            }
+
+            .schedule-card h4 {
+                font-size: 0.85em;
+                line-height: 1.1;
+            }
+
+            .table-header {
+                font-size: 0.8em;
+                line-height: 1.1;
+            }
+
+            .qa-section h2 {
+                font-size: 1.1em;
+                line-height: 1.1;
+            }
+
+            .cta-section h2 {
+                font-size: 1.4em;
+                line-height: 1.1;
+            }
+
+            .table-of-contents h2 {
+                font-size: 1.2em;
+                line-height: 1.1;
+            }
+
+            .referral-section h2 {
+                font-size: 1em;
+                line-height: 1;
+            }
+
+            .referral-table th {
+                font-size: 0.6em;
+                padding: 4px 1px;
+            }
+
+            .referral-table tr:last-child td {
+                font-size: 0.85em;
+                font-weight: bold;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating CTA Button -->
+    <a href="http://careers.7-eleven.vn" class="floating-cta" target="_blank">
+        🚀 ỨNG TUYỂN NGAY
+    </a>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>7-ELEVEN HÀ NỘI</h1>
+            <p>TUYỂN DỤNG NHÂN VIÊN CỬA HÀNG</p>
+            <a href="http://careers.7-eleven.vn" class="header-cta" target="_blank">
+                ✨ ỨNG TUYỂN NGAY
+            </a>
+        </div>
+
+        <!-- Mục lục -->
+        <div class="table-of-contents">
+            <h2>📋 MỤC LỤC</h2>
+            <div class="toc-grid">
+                <a href="#gioi-thieu" class="toc-item">
+                    <span class="toc-icon">🏢</span>
+                    <span class="toc-text">Giới thiệu về 7-Eleven</span>
+                </a>
+                <a href="#noi-dung-cong-viec" class="toc-item">
+                    <span class="toc-icon">💼</span>
+                    <span class="toc-text">Nội dung công việc</span>
+                </a>
+                <a href="#thoi-gian-lam-viec" class="toc-item">
+                    <span class="toc-icon">⏰</span>
+                    <span class="toc-text">Thời gian làm việc</span>
+                </a>
+                <a href="#yeu-cau" class="toc-item">
+                    <span class="toc-icon">👤</span>
+                    <span class="toc-text">Yêu cầu ứng viên</span>
+                </a>
+                <a href="#luong-thuong" class="toc-item">
+                    <span class="toc-icon">💰</span>
+                    <span class="toc-text">Chế độ lương thưởng</span>
+                </a>
+                <a href="#phuc-loi" class="toc-item">
+                    <span class="toc-icon">🎁</span>
+                    <span class="toc-text">Chế độ phúc lợi</span>
+                </a>
+                <a href="#ho-so" class="toc-item">
+                    <span class="toc-icon">📄</span>
+                    <span class="toc-text">Hồ sơ cần chuẩn bị</span>
+                </a>
+                <a href="#quy-trinh" class="toc-item">
+                    <span class="toc-icon">📋</span>
+                    <span class="toc-text">Quy trình ứng tuyển</span>
+                </a>
+                <a href="#quy-trinh-lien-quan" class="toc-item">
+                    <span class="toc-icon">⚙️</span>
+                    <span class="toc-text">Quy trình liên quan</span>
+                </a>
+                <a href="#thuong-gioi-thieu" class="toc-item">
+                    <span class="toc-icon">🎯</span>
+                    <span class="toc-text">Thưởng giới thiệu</span>
+                </a>
+                <a href="#qa" class="toc-item">
+                    <span class="toc-icon">❓</span>
+                    <span class="toc-text">Câu hỏi thường gặp</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Content Container -->
+        <div class="slides-container">
+            <!-- Slide 1: Giới thiệu về 7-Eleven -->
+            <div class="slide" id="gioi-thieu">
+                <h2>🏢 GIỚI THIỆU VỀ 7-ELEVEN</h2>
+                <h3>Toàn cầu</h3>
+                <ul>
+                    <li>Chuỗi cửa hàng tiện lợi số 1 thế giới</li>
+                    <li>85.000 cửa hàng tại 20 quốc gia</li>
+                    <li>Ra đời tại Mỹ năm 1927</li>
+                    <li>Thuộc tập đoàn 7&i Holdings (Nhật)</li>
+                </ul>
+                <h3>Tại Việt Nam</h3>
+                <ul>
+                    <li>2017: Cửa hàng đầu tiên tại TP.HCM</li>
+                    <li>Hiện tại: Gần 150 cửa hàng</li>
+                    <li>2025: Mở rộng tại Hà Nội</li>
+                </ul>
+            </div>
+
+            <!-- Poster Nội dung công việc -->
+            <div class="job-content-poster" id="noi-dung-cong-viec">
+                <div class="poster-header">
+                    <h2>💼 NỘI DUNG CÔNG VIỆC</h2>
+                    <p>Tìm hiểu công việc hàng ngày tại 7-Eleven</p>
+                </div>
+                
+                <div class="job-grid">
+                    <div class="job-card">
+                        <h3>Phục vụ khách hàng</h3>
+                        <ul>
+                            <li>Chào đón, thanh toán cho khách hàng</li>
+                            <li>Thao tác máy POS: bàn giao ca, rút tiền, đóng ca, giảm giá</li>
+                            <li>Hỗ trợ tư vấn sản phẩm</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="job-card">
+                        <h3>Chế biến thực phẩm</h3>
+                        <ul>
+                            <li>Chuẩn bị nguyên liệu, chế biến thức ăn</li>
+                            <li>Pha chế nước uống theo đúng công thức</li>
+                            <li>Ghi chép số chế biến và kiểm soát chất lượng</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="job-card">
+                        <h3>Quản lý hàng hóa</h3>
+                        <ul>
+                            <li>Sắp xếp, trưng bày hàng hóa và bảng giá</li>
+                            <li>Nhận hàng, kiểm tra chất lượng và hạn sử dụng</li>
+                            <li>Hủy hàng hết hạn theo quy trình</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="job-card">
+                        <h3>Vận hành cửa hàng</h3>
+                        <ul>
+                            <li>Vệ sinh cửa hàng và khu vực ăn uống</li>
+                            <li>Hướng dẫn nhân viên mới</li>
+                            <li>Giao hàng khu vực lân cận khi cần</li>
+                            <li>Báo cáo và xử lý sự cố</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Poster Thời gian làm việc -->
+            <div class="job-content-poster" id="thoi-gian-lam-viec">
+                <div class="poster-header">
+                    <h2>⏰ THỜI GIAN LÀM VIỆC</h2>
+                    <p>Các ca làm việc và thời gian tại 7-Eleven</p>
+                </div>
+                
+                <div class="schedule-grid">
+                    <div class="schedule-card">
+                        <h4>Ca làm việc</h4>
+                        <ul>
+                            <li>Ca sáng: 06:00-14:00</li>
+                            <li>Ca chiều: 14:00-22:00</li>
+                            <li>Ca đêm: 22:00-06:00</li>
+                        </ul>
+                    </div>
+                    <div class="schedule-card">
+                        <h4>Thời gian</h4>
+                        <ul>
+                            <li>Full-time: 8h/ngày, 6 ngày/tuần</li>
+                            <li>Part-time: 4-8h/ngày, max 104h/tháng</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3: Yêu cầu -->
+            <div class="slide" id="yeu-cau">
+                <h2>👤 YÊU CẦU ỨNG VIÊN</h2>
+                <h3>Điều kiện cơ bản</h3>
+                <ul>
+                    <li>Tuổi: 18-35</li>
+                    <li>Học vấn: THCS trở lên</li>
+                    <li>Sức khỏe tốt, nhanh nhẹn</li>
+                </ul>
+                <h3>Kỹ năng cần có</h3>
+                <ul>
+                    <li>Giao tiếp tốt</li>
+                    <li>Có trách nhiệm</li>
+                    <li>Trung thực, đáng tin cậy</li>
+                </ul>
+            </div>
+
+            <!-- Slide 4: Lương thưởng -->
+            <div class="slide" id="luong-thuong">
+                <h2>💰 CHẾ ĐỘ LƯƠNG THƯỞNG</h2>
+                
+                <!-- Nhân viên Part-time -->
+                <div style="margin: 15px 0;">
+                    <div class="table-header">
+                        <span class="icon">⚪</span>NHÂN VIÊN PART-TIME (max 104 giờ/tháng)
+                    </div>
+                    <table class="salary-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 50%;">Khoản thu nhập</th>
+                                <th style="width: 25%;">Học việc</th>
+                                <th style="width: 25%;">Chính thức</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="font-weight: bold;">Lương cơ bản/giờ</td>
+                                <td>21.000đ</td>
+                                <td>24.000đ</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold;">Ca đêm (22h-6h)</td>
+                                <td>27.000đ</td>
+                                <td>32.000đ</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold;">Trợ cấp/tháng</td>
+                                <td>143.000đ</td>
+                                <td>143.000đ</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold;">Thưởng PAC + ProBev</td>
+                                <td style="color: #ff6c00; font-weight: bold;">PAC + PB Sale</td>
+                                <td style="color: #ff6c00; font-weight: bold;">PAC + PB Sale</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold;">7Thanks</td>
+                                <td style="color: #ec0f2a; font-weight: bold;">Có</td>
+                                <td style="color: #ec0f2a; font-weight: bold;">Có</td>
+                            </tr>
+                            <tr>
+                                <td style="font-size: 0.8em;">TỔNG CỘNG</td>
+                                <td style="font-size: 0.8em;">~2.307.000đ - 2.956.000đ</td>
+                                <td style="font-size: 0.8em;">~2.689.000đ - 3.453.000đ</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Nhân viên Full-time -->
+                <div style="margin: 15px 0;">
+                    <div class="table-header">
+                        <span class="icon">⚪</span>NHÂN VIÊN FULL-TIME (208 giờ/tháng)
+                    </div>
+                    <table class="salary-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 50%;">Khoản thu nhập</th>
+                                <th style="width: 25%;">Học việc</th>
+                                <th style="width: 25%;">Chính thức</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="font-weight: bold;">Lương cơ bản</td>
+                                <td>4.328.000đ</td>
+                                <td>5.092.000đ</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold;">Trợ cấp các loại</td>
+                                <td>936.000đ</td>
+                                <td>936.000đ</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold;">Thưởng hiệu quả</td>
+                                <td>476.000đ</td>
+                                <td>560.000đ</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold;">Thưởng PAC + ProBev</td>
+                                <td style="color: #ff6c00; font-weight: bold;">PAC + PB Sale</td>
+                                <td style="color: #ff6c00; font-weight: bold;">PAC + PB Sale</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold;">7Thanks</td>
+                                <td style="color: #ec0f2a; font-weight: bold;">Có</td>
+                                <td style="color: #ec0f2a; font-weight: bold;">Có</td>
+                            </tr>
+                            <tr>
+                                <td style="font-size: 0.8em;">TỔNG CỘNG</td>
+                                <td style="font-size: 0.8em;">5.740.000đ</td>
+                                <td style="font-size: 0.8em;">6.588.000đ</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Slide 5: Phúc lợi -->
+            <div class="slide" id="phuc-loi">
+                <h2>🎁 CHẾ ĐỘ PHÚC LỢI</h2>
+                <h3>Phúc lợi Full-time</h3>
+                <ul>
+                    <li>BHXH, BHYT, BHTN đầy đủ</li>
+                    <li>12 ngày nghỉ phép/năm</li>
+                    <li>Khám sức khỏe định kỳ</li>
+                    <li>Lương tháng 13</li>
+                    <li>Tăng lương 6 tháng/lần</li>
+                </ul>
+                <h3>Cơ hội phát triển</h3>
+                <ul>
+                    <li>Đào tạo nghiệp vụ chuyên sâu</li>
+                    <li>Lộ trình thăng tiến rõ ràng từ Nhân viên bán hàng đến Quản lý khu vực</li>
+                    <li>Chuyển đổi Full-time/Part-time linh hoạt</li>
+                </ul>
+                
+                <!-- Bảng lộ trình thăng tiến -->
+                <h3 style="margin-top: 20px;">📈 Lộ trình thăng tiến</h3>
+                <table class="career-path-table">
+                    <thead>
+                        <tr>
+                            <th>Vị trí</th>
+                            <th>Số năm kinh nghiệm</th>
+                            <th>Mô tả</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="career-level">SAP/SAF</td>
+                            <td>0-6 tháng</td>
+                            <td>Nhân viên bán hàng</td>
+                        </tr>
+                        <tr>
+                            <td class="career-level">SSL</td>
+                            <td>6 tháng - 1.5 năm</td>
+                            <td>Trưởng ca bán hàng</td>
+                        </tr>
+                        <tr>
+                            <td class="career-level">ASM</td>
+                            <td>1.5 - 2.5 năm</td>
+                            <td>Trợ lý Quản lý cửa hàng</td>
+                        </tr>
+                        <tr>
+                            <td class="career-level">SM</td>
+                            <td>2.5 - 3.5 năm</td>
+                            <td>Quản lý cửa hàng</td>
+                        </tr>
+                        <tr>
+                            <td class="career-level">AS</td>
+                            <td>3.5 - 4.5 năm</td>
+                            <td>Giám sát khu vực</td>
+                        </tr>
+                        <tr>
+                            <td class="career-level">AM</td>
+                            <td>4.5+ năm</td>
+                            <td>Quản lý khu vực</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top: 10px; font-size: 0.8em; color: #666; text-align: center;">
+                    <em>Thời gian thăng tiến dựa trên hiệu suất làm việc và đánh giá định kỳ 6 tháng</em>
+                </p>
+            </div>
+
+            <!-- Slide 6: Hồ sơ -->
+            <div class="slide" id="ho-so">
+                <h2>📄 HỒ SƠ CẦN CHUẨN BỊ</h2>
+                <h3>Ngày đào tạo đầu tiên</h3>
+                <ul>
+                    <li>CCCD 12 số (công chứng)</li>
+                    <li>Sơ yếu lý lịch (công chứng)</li>
+                </ul>
+                <h3>Hồ sơ bổ sung</h3>
+                <ul>
+                    <li>Giấy khám sức khỏe TT32 (trong 7 ngày)</li>
+                    <li>Lý lịch tư pháp số 2 hoặc Xác nhận hạnh kiểm (trong 30 ngày)</li>
+                </ul>
+            </div>
+
+            <!-- Slide 7: Quy trình ứng tuyển -->
+            <div class="slide" id="quy-trinh">
+                <h2>📋 QUY TRÌNH TUYỂN DỤNG</h2>
+                <div class="process-steps">
+                    <div class="step">
+                        <div class="step-number">Bước 1:</div>
+                        <div class="step-action">Ứng tuyển online</div>
+                        <div style="margin-top: 8px; font-size: 0.9em;">
+                            <a href="https://7elevenvn.talent.vn/job/ha-noi-nhan-vien-cua-hang-full-timepart-time-47863" target="_blank" style="color: #ff6c00; text-decoration: underline;">
+                                👉 Link ứng tuyển tại đây
+                            </a>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">Bước 2:</div>
+                        <div class="step-action">Phỏng vấn</div>
+                        <div style="margin-top: 5px; font-size: 0.85em; color: #666;">
+                            • Sơ vấn qua điện thoại<br>
+                            • Phỏng vấn tại cửa hàng
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">Bước 3:</div>
+                        <div class="step-action">Đào tạo 3 ngày tại trung tâm</div>
+                        <div style="margin-top: 10px;">
+                            <div style="background: linear-gradient(135deg, #007350, #1b5644); color: white; padding: 8px 12px; border-radius: 8px 8px 0 0; font-weight: bold; font-size: 0.9em; text-align: center;">
+                                📅 Lịch đào tạo Nhân viên cửa hàng - Tháng 7/2025
+                            </div>
+                            <div style="background: white; border: 1px solid #e9ecef; border-top: none; border-radius: 0 0 8px 8px; padding: 15px;">
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 15px;">
+                                    <div style="background: #f8f9fa; padding: 8px 12px; border-radius: 6px; text-align: center; font-weight: bold; color: #1b5644; font-size: 0.85em; border: 1px solid #e9ecef;">
+                                        Lớp 1: 26/6/2025
+                                    </div>
+                                    <div style="background: #f8f9fa; padding: 8px 12px; border-radius: 6px; text-align: center; font-weight: bold; color: #1b5644; font-size: 0.85em; border: 1px solid #e9ecef;">
+                                        Lớp 2: 01/7/2025
+                                    </div>
+                                </div>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 15px;">
+                                    <div style="background: #f8f9fa; padding: 8px 12px; border-radius: 6px; text-align: center; font-weight: bold; color: #1b5644; font-size: 0.85em; border: 1px solid #e9ecef;">
+                                        Lớp 3: 08/7/2025
+                                    </div>
+                                    <div style="background: #f8f9fa; padding: 8px 12px; border-radius: 6px; text-align: center; font-weight: bold; color: #1b5644; font-size: 0.85em; border: 1px solid #e9ecef;">
+                                        Lớp 4: 15/7/2025
+                                    </div>
+                                    <div style="background: #f8f9fa; padding: 8px 12px; border-radius: 6px; text-align: center; font-weight: bold; color: #1b5644; font-size: 0.85em; border: 1px solid #e9ecef;">
+                                        Lớp 5: 22/7/2025
+                                    </div>
+                                </div>
+                                <div style="background: linear-gradient(135deg, #007350, #1b5644); color: white; padding: 12px; border-radius: 8px; text-align: center;">
+                                    <div style="font-weight: bold; margin-bottom: 4px;">📍 Địa điểm đào tạo</div>
+                                    <div style="font-size: 0.9em;">
+                                        Training Room - 52 Lò Sũ, Hàng Bạc, Hoàn Kiếm, Hà Nội
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">Bước 4:</div>
+                        <div class="step-action">Học việc 2 tháng tại cửa hàng</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">Bước 5:</div>
+                        <div class="step-action">Ký hợp đồng chính thức</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 8: Quy trình liên quan -->
+            <div class="slide" id="quy-trinh-lien-quan">
+                <h2>⚙️ QUY TRÌNH LIÊN QUAN</h2>
+                <h3>Xin nghỉ phép</h3>
+                <ul>
+                    <li>Báo trước 7 ngày</li>
+                    <li>Được duyệt trước 4 ngày</li>
+                </ul>
+                <h3>Chuyển đổi Full-time/Part-time</h3>
+                <ul>
+                    <li>Chỉ được chuyển đổi tối đa 2 lần trong quá trình làm việc</li>
+                    <li>Tạo ticket trước ngày 21 ít nhất 5 ngày</li>
+                    <li>Không áp dụng trong thời gian học việc (2 tháng đầu)</li>
+                </ul>
+                <h3>Chấm dứt hợp đồng</h3>
+                <ul>
+                    <li>Học việc: báo trước 5 ngày</li>
+                    <li>Hợp đồng có thời hạn: báo trước 30 ngày</li>
+                    <li>Hợp đồng vô thời hạn: báo trước 45 ngày</li>
+                </ul>
+            </div>
+
+            <!-- Slide 9: Thưởng giới thiệu -->
+            <div class="referral-section" id="thuong-gioi-thieu">
+                <h2>🎯 THƯỞNG GIỚI THIỆU</h2>
+                
+                <table class="referral-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 30%;">Giai đoạn</th>
+                            <th style="width: 40%;">Điều kiện</th>
+                            <th style="width: 30%;">Thưởng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Giai đoạn 1</td>
+                            <td>Hoàn thành học việc + Ký HĐLĐ chính thức</td>
+                            <td>400.000 VNĐ</td>
+                        </tr>
+                        <tr>
+                            <td>Giai đoạn 2</td>
+                            <td>Làm việc đủ 6 tháng</td>
+                            <td>400.000 VNĐ</td>
+                        </tr>
+                        <tr>
+                            <td>TỔNG CỘNG</td>
+                            <td></td>
+                            <td>800.000 VNĐ</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="referral-conditions">
+                    <h4>Điều kiện:</h4>
+                    <ul>
+                        <li>Áp dụng cho nhân viên Full-time (Quản lý cửa hàng/Trợ lý Quản lý cửa hàng, Trưởng ca bán hàng, Nhân viên bán hàng)</li>
+                        <li>Không giới hạn số người giới thiệu</li>
+                        <li>Chi thưởng cuối mỗi quý</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q&A Section -->
+        <div class="qa-section" id="qa">
+            <h2>❓ CÂU HỎI THƯỜNG GẶP</h2>
+            
+            <div class="qa-item">
+                <div class="qa-question">Q: Hiện tại còn tuyển dụng ở cửa hàng nào?</div>
+                <div class="qa-answer">A: Bạn có thể xem danh sách cửa hàng đang tuyển tại <a href="http://careers.7-eleven.vn" style="color: #ff6c00;">careers.7-eleven.vn</a></div>
+            </div>
+
+            <div class="qa-item">
+                <div class="qa-question">Q: Lương được tính như thế nào?</div>
+                <div class="qa-answer">A: Lương tùy theo vị trí:
+                    <br><strong>Full-time (208h/tháng):</strong>
+                    <ul>
+                        <li>Học việc: 5.740.000đ/tháng</li>
+                        <li>Chính thức: 6.588.000đ/tháng</li>
+                    </ul>
+                    <strong>Part-time (max 104h/tháng):</strong>
+                    <ul>
+                        <li>Học việc: 21.000đ/giờ (ca đêm 27.000đ/giờ)</li>
+                        <li>Chính thức: 24.000đ/giờ (ca đêm 32.000đ/giờ)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="qa-item">
+                <div class="qa-question">Q: Có thể chuyển đổi giữa Full-time và Part-time không?</div>
+                <div class="qa-answer">A: Có thể chuyển đổi với điều kiện:
+                    <ul>
+                        <li>Chỉ được chuyển tối đa 2 lần trong quá trình làm việc</li>
+                        <li>Không áp dụng trong thời gian học việc (2 tháng đầu)</li>
+                        <li>Tạo ticket trước ngày 21 ít nhất 5 ngày</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="qa-item">
+                <div class="qa-question">Q: Có thể chuyển cửa hàng làm việc không?</div>
+                <div class="qa-answer">A: Có thể xin chuyển cửa hàng khi:
+                    <ul>
+                        <li>Đã làm việc ít nhất 6 tháng</li>
+                        <li>Cửa hàng đích có nhu cầu tuyển dụng</li>
+                        <li>Được sự đồng ý của cả hai quản lý cửa hàng</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="qa-item">
+                <div class="qa-question">Q: Cơ hội thăng tiến như thế nào?</div>
+                <div class="qa-answer">A: Lộ trình thăng tiến rõ ràng:
+                    <ul>
+                        <li>SAP/SAF (Nhân viên) → SSL (Trưởng ca): 6 tháng - 1.5 năm</li>
+                        <li>SSL → ASM (Trợ lý quản lý): 1.5 - 2.5 năm</li>
+                        <li>ASM → SM (Quản lý cửa hàng): 2.5 - 3.5 năm</li>
+                        <li>SM → AS (Giám sát khu vực): 3.5 - 4.5 năm</li>
+                        <li>AS → AM (Quản lý khu vực): 4.5+ năm</li>
+                        <li>Có cơ hội chuyển lên khối văn phòng</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="qa-item">
+                <div class="qa-question">Q: Ca làm việc cố định hay linh hoạt?</div>
+                <div class="qa-answer">A: Có 3 ca chính:
+                    <ul>
+                        <li>Ca A: 6:00-14:00</li>
+                        <li>Ca B: 14:00-22:00</li>
+                        <li>Ca C (ca đêm): 22:00-6:00</li>
+                    </ul>
+                    <strong>Full-time:</strong> 8 tiếng/ngày, 6 ngày/tuần<br>
+                    <strong>Part-time:</strong> 4-8 tiếng/ngày, max 104 tiếng/tháng
+                </div>
+            </div>
+
+            <div class="qa-item">
+                <div class="qa-question">Q: Thuế TNCN tính như thế nào?</div>
+                <div class="qa-answer">A: Thuế TNCN theo quy định:
+                    <ul>
+                        <li><strong>Hợp đồng học việc:</strong> 10% với thu nhập trên 2.000.000đ</li>
+                        <li><strong>Hợp đồng chính thức:</strong> Theo bảng thuế lũy tiến từ 11.000.000đ/tháng</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="qa-item">
+                <div class="qa-question">Q: Thưởng giới thiệu nhân viên mới như thế nào?</div>
+                <div class="qa-answer">A: Chương trình thưởng giới thiệu:
+                    <ul>
+                        <li>400.000đ khi người được giới thiệu hoàn thành học việc và ký HĐLĐ chính thức</li>
+                        <li>400.000đ khi người được giới thiệu làm việc đủ 6 tháng</li>
+                        <li>Chỉ áp dụng cho nhân viên Full-time (Quản lý cửa hàng/Trợ lý Quản lý cửa hàng, Trưởng ca bán hàng, Nhân viên bán hàng)</li>
+                        <li>Không giới hạn số người giới thiệu</li>
+                        <li>Chi thưởng cuối mỗi quý</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2>🚀 THAM GIA NGAY HÔM NAY!</h2>
+            <a href="http://careers.7-eleven.vn" class="cta-button" target="_blank">
+                ỨNG TUYỂN NGAY
+            </a>
+            
+            <div class="social-links">
+                <div class="social-row">
+                    <a href="http://careers.7-eleven.vn" class="social-link" target="_blank">
+                        <span class="social-icon">🌐</span>
+                        <span>careers.7-eleven.vn</span>
+                    </a>
+                    <a href="https://www.linkedin.com/company/7-eleven-vn/posts/?feedView=all" class="social-link" target="_blank">
+                        <span class="social-icon">💼</span>
+                        <span>LinkedIn</span>
+                    </a>
+                </div>
+                <div class="social-row">
+                    <a href="https://www.facebook.com/7ElevenVNCareers" class="social-link" target="_blank">
+                        <span class="social-icon">📘</span>
+                        <span>Facebook</span>
+                    </a>
+                    <a href="https://www.tiktok.com/@7elevenvietnamcareers?_t=ZS-8x8g7AHWSvv&_r=1" class="social-link" target="_blank">
+                        <span class="social-icon">🎵</span>
+                        <span>TikTok</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
